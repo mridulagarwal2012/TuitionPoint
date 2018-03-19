@@ -12,3 +12,5 @@ handle["/api/suspend"] = suspend.suspend;
 handle["/api/retrievefornotifications"] = retrievefornotifications.retrievefornotifications;
 
 server.start(router.route, handle);
+
+module.exports = () => 'Student managemnt system';

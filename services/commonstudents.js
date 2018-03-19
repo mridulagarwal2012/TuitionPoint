@@ -50,26 +50,31 @@ function commonstudents(response, qstr){
      		response.end("Teacher(s) not found");
 
   		} else {
-     		//getting students that are registerd
-     		connection.connection.query(selectQuery_commonStudents , function(err,result) {
-		  		if(err) {
-		    		response.writeHead(400);
-					response.write("ERROR in students: "+err);
-		     		response.end();
-		  		} else {
-		  			//response.writeHead(204);
-		  			var students_list = [];
-		  			for( var i = 0; i <result.length; i++){
-		  				students_list.push(result[i].student_id);
-		  			}
-		  			var unique_students = students_list.filter((x, i , a) => a.indexOf(x) == i);
-		  			response.writeHead(200, { 'Content-Type': 'application/json' });
-		  			var commonstudents = {
-		  				"students":unique_students
-		  			}
-		     		response.end(JSON.stringify(commonstudents));
-				} 
-			});  	
+  			if(numberOfTeachers > 2){
+  				response.writeHead(400);
+     			response.end("There should be at most 2 teachers.");
+  			} else {
+  				//getting students that are registerd
+	     		connection.connection.query(selectQuery_commonStudents , function(err,result) {
+			  		if(err) {
+			    		response.writeHead(400);
+						response.write("ERROR in students: "+err);
+			     		response.end();
+			  		} else {
+			  			//response.writeHead(204);
+			  			var students_list = [];
+			  			for( var i = 0; i <result.length; i++){
+			  				students_list.push(result[i].student_id);
+			  			}
+			  			var unique_students = students_list.filter((x, i , a) => a.indexOf(x) == i);
+			  			response.writeHead(200, { 'Content-Type': 'application/json' });
+			  			var commonstudents = {
+			  				"students":unique_students
+			  			}
+			     		response.end(JSON.stringify(commonstudents));
+					} 
+				});
+  			}  	
  		}
 	});
 

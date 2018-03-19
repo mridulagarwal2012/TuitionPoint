@@ -1,6 +1,6 @@
 var assert = require('assert'),
  http = require('http'),
- base_url = "http://localhost:3000/";
+ base_url = "http://localhost:3001/";
 var chai = require('chai');
 var chaijsonequal = require("chai-json-equal");
 chai.use(chaijsonequal);
@@ -56,6 +56,22 @@ describe('/api/commonstudents', function () {
       res.on('end', function () {
         assert.equal(400, res.statusCode);
         assert.equal("Teacher(s) not found", data);
+        done();
+      });
+    });
+  });
+
+  it('Should result in a bad request, as more than two teachers were sent', function (done) {
+    http.get(base_url+'api/commonstudents?teacher=teacherkenny%40gmail.com&teacher=teacherbenny%40gmail.com&teacher=teachermikey%40gmail.com', function (res) {
+      var data = '';
+
+      res.on('data', function (chunk) {
+        data += chunk;
+      });
+
+      res.on('end', function () {
+        assert.equal(400, res.statusCode);
+        assert.equal("There should be at most 2 teachers.", data);
         done();
       });
     });
