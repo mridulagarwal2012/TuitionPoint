@@ -16,6 +16,19 @@ var payload = { "teacher": "teacherbenny@gmail.com",
 					      "studentsid@gmail.com"
 					  ]
 			  }
+var payload_wrongTeacher = { "teacher": "teacherdanny@gmail.com",
+           "students":[
+                "studentseal@gmail.com",
+                "studentsid@gmail.com"
+            ]
+        }
+
+var payload_wrongStudent = { "teacher": "teacherbenny@gmail.com",
+           "students":[
+                "studentmay@gmail.com",
+                "studentsid@gmail.com"
+            ]
+        }
 
 describe('/api/register', function () {
   it('should return students registered for a given teacher', function (done) {
@@ -24,9 +37,27 @@ describe('/api/register', function () {
         .post('/api/register')
         .send(payload)
         .end((err, res) => {
-          //assert.equal(204, res.status);
-
           res.should.have.status(204);
+          done();
+      });
+  });
+  it('should return bad request as the given teacher is not found', function (done) {
+    
+   chai.request(base_url)
+        .post('api/register')
+        .send(payload_wrongTeacher)
+        .end((err, res) => {
+          res.should.have.status(400);
+          done();
+      });
+  });
+  it('should return bad request as given student(s) not found', function (done) {
+    
+   chai.request(base_url)
+        .post('api/register')
+        .send(payload_wrongStudent)
+        .end((err, res) => {
+          res.should.have.status(400);
           done();
       });
   });
