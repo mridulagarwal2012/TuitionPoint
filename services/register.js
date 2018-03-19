@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 
 function register(response, postData){
 
+	//console.log(postData);
+
 	var jsondata = postData;
 	
 	var values = [];

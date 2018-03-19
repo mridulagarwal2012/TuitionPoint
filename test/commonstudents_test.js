@@ -1,6 +1,6 @@
 var assert = require('assert'),
  http = require('http'),
- base_url = "http://localhost:3001/";
+ base_url = "http://localhost:3000/";
 var chai = require('chai');
 var chaijsonequal = require("chai-json-equal");
 chai.use(chaijsonequal);

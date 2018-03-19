@@ -5,6 +5,7 @@ var chai = require('chai');
 var server = require('../server');
 let chaiHttp = require('chai-http');
 var chaijsonequal = require("chai-json-equal");
+let should = chai.should();
 chai.use(chaijsonequal);
 chai.use(chaiHttp);
 var expect = chai.expect;
@@ -19,12 +20,13 @@ var payload = { "teacher": "teacherbenny@gmail.com",
 describe('/api/register', function () {
   it('should return students registered for a given teacher', function (done) {
   	
-	 chai.request(server.start)
+	 chai.request('http://localhost:3000')
         .post('/api/register')
         .send(payload)
         .end((err, res) => {
-          assert.equal(204, err);
-          //res.should.have.status(204);
+          //assert.equal(204, res.status);
+
+          res.should.have.status(204);
           done();
       });
   });
