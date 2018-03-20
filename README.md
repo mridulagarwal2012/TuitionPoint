@@ -20,7 +20,7 @@ If the suspension status is true that means the students has been suspended and 
 Public URL:https://dashboard.jawsdb.com/mysql/dashboard/databites/51ca8ad9-8cd0-45ff-8a03-53d62fd0a887
 ![reg](https://user-images.githubusercontent.com/8236854/37642972-0fc2d8bc-2c5a-11e8-9bbc-d781e968cbd0.png)
 The application is deployed on heroku and can be accessed on the 
-https://tuitionpoint.herokuapp.com/
+### https://tuitionpoint.herokuapp.com/
 The application is designed in such a way that it will handle requests from below mentioned URLs if we try to access it from a different  URL  a message 404 not found will be displayed.
 ### A teacher can Register a student 
 https://tuitionpoint.herokuapp.com/api/register
