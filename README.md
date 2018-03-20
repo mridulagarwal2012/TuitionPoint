@@ -9,19 +9,27 @@ The application contains three table.
 ### Teacher :- Contains the teacher_id for all the teachers in the tuition.
 Public URL:  https://dashboard.jawsdb.com/mysql/dashboard/databites/51ca8ad9-8cd0-45ff-8a03-53d62fd0a887
 ![teach](https://user-images.githubusercontent.com/8236854/37642922-e449e0ae-2c59-11e8-9922-7b49a07bee9b.png)
+
 If a teacher makes request with the teacher id which is not mentioned in the teacher table.He will receive a message Teacher(s) not found.
 So the application will only for the teacher_id mentioned below: -
+
 •	teacherbenny@gmail.com
+
 •	teacherjohny@gmail.com
+
 •	teacherkenny@gmail.com
+
 •	teachermikey@gmail.com
+
 ### Registrationdetails :- Contains  the students(Student_id) registered to a particular teacher       (Teacher_id) and suspension_status signifies whether the student is still registered.
 If the suspension status is true that means the students has been suspended and he wont be able to receive notification from teacher.
 Public URL:https://dashboard.jawsdb.com/mysql/dashboard/databites/51ca8ad9-8cd0-45ff-8a03-53d62fd0a887
 ![reg](https://user-images.githubusercontent.com/8236854/37642972-0fc2d8bc-2c5a-11e8-9bbc-d781e968cbd0.png)
 The application is deployed on heroku and can be accessed on the 
 ### https://tuitionpoint.herokuapp.com/
+
 The application is designed in such a way that it will handle requests from below mentioned URLs if we try to access it from a different  URL  a message 404 not found will be displayed.
+
 ### A teacher can Register a student 
 https://tuitionpoint.herokuapp.com/api/register
 ![regiterrrrrr](https://user-images.githubusercontent.com/8236854/37643102-6ded2906-2c5a-11e8-9689-b48812c2ecce.png)
