@@ -29,7 +29,7 @@ function start(route, handle) {
 	}
 
 	http.createServer(onRequest).listen(3000);
-	console.log("Server has started.");
+	console.log("YO!!Server has started.");
 
 }
 exports.start = start;
