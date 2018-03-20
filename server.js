@@ -29,7 +29,7 @@ function start(route, handle) {
 	}
 
 	http.createServer(onRequest).listen(process.env.PORT || 3000);
-	console.log("YEAH!!Server has started.");
+	console.log("Server has started.");
 
 }
 exports.start = start;
