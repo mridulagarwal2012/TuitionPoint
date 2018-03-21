@@ -11,30 +11,27 @@ Public URL:  https://dashboard.jawsdb.com/mysql/dashboard/databites/51ca8ad9-8cd
 ![teach](https://user-images.githubusercontent.com/8236854/37642922-e449e0ae-2c59-11e8-9922-7b49a07bee9b.png)
 
 If a teacher makes request with the teacher id which is not mentioned in the teacher table.He will receive a message Teacher(s) not found.
-So the application will only for the teacher_id mentioned below: -
-
-•	teacherbenny@gmail.com
-
-•	teacherjohny@gmail.com
-
-•	teacherkenny@gmail.com
-
-•	teachermikey@gmail.com
-
 ### Registrationdetails :- Contains  the students(Student_id) registered to a particular teacher       (Teacher_id) and suspension_status signifies whether the student is still registered.
-If the suspension status is true that means the students has been suspended and he wont be able to receive notification from teacher.
+If the suspension status is true that means the students has been suspended and he wont be able to receive notification from teacher.If the student is already registered you can register him again.
 Public URL:https://dashboard.jawsdb.com/mysql/dashboard/databites/51ca8ad9-8cd0-45ff-8a03-53d62fd0a887
 ![reg](https://user-images.githubusercontent.com/8236854/37642972-0fc2d8bc-2c5a-11e8-9bbc-d781e968cbd0.png)
 The application is deployed on heroku and can be accessed on the 
 ### https://tuitionpoint.herokuapp.com/
 
 The application is designed in such a way that it will handle requests from below mentioned URLs if we try to access it from a different  URL  a message 404 not found will be displayed.
-
+### A teacher can add students with valid email ids only.
+https://tuitionpoint.herokuapp.com/api/addstudents
+![studentadd](https://user-images.githubusercontent.com/8236854/37719024-09747258-2d5f-11e8-8dc8-7a88ee046335.jpg)
+### A teacher can add teachers with valid email ids only.
+https://tuitionpoint.herokuapp.com/api/addteachers
+![teacheradd](https://user-images.githubusercontent.com/8236854/37718777-783b866e-2d5e-11e8-9da3-65466ea15ada.jpg)
 ### A teacher can Register a student 
 https://tuitionpoint.herokuapp.com/api/register
 ![regiterrrrrr](https://user-images.githubusercontent.com/8236854/37643102-6ded2906-2c5a-11e8-9689-b48812c2ecce.png)
 If a teacher tries to register with a teacher id which is not in the teacher table he will receive a message Teacher not found
 ![not found](https://user-images.githubusercontent.com/8236854/37643179-b1b23df2-2c5a-11e8-8420-cf58b389eaaf.png)
+If a teacher tries to register a student who is already registered will receive and error messgage.
+![ttt](https://user-images.githubusercontent.com/8236854/37718616-16237e82-2d5e-11e8-9b44-1d828a1c7991.png)
 ### A teacher can Suspend a student 
 https://tuitionpoint.herokuapp.com/api/suspend
 ![suspend](https://user-images.githubusercontent.com/8236854/37643268-e4eb85f2-2c5a-11e8-9e58-16d994eb3857.png)
