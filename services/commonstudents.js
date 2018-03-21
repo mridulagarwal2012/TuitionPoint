@@ -46,13 +46,23 @@ function commonstudents(response, qstr){
 			response.write("ERROR: "+err);
      		response.end();
   		} else if(result.length < numberOfTeachers){
-  			response.writeHead(400);
-     		response.end("Teacher(s) not found");
+  			response.writeHead(400, { 'Content-Type': 'application/json' });
+  			var teacher_not_found = {
+  				"Error":{
+  					"message": "Teacher not found"
+  				}
+  			}
+     		response.end(JSON.stringify(teacher_not_found));
 
   		} else {
   			if(numberOfTeachers > 2){
-  				response.writeHead(400);
-     			response.end("There should be at most 2 teachers.");
+  				response.writeHead(400, { 'Content-Type': 'application/json' });
+	  			var atmost = {
+	  				"Error":{
+	  					"message": "there should be atmost 2 teachers"
+	  				}
+	  			}
+	     		response.end(JSON.stringify(atmost));
   			} else {
   				//getting students that are registerd
 	     		connection.connection.query(selectQuery_commonStudents , function(err,result) {
@@ -69,6 +79,9 @@ function commonstudents(response, qstr){
 			  			var unique_students = students_list.filter((x, i , a) => a.indexOf(x) == i);
 			  			response.writeHead(200, { 'Content-Type': 'application/json' });
 			  			var commonstudents = {
+			  				"success":{
+			  					"message":"students successfully retrived"
+			  				},
 			  				"students":unique_students
 			  			}
 			     		response.end(JSON.stringify(commonstudents));

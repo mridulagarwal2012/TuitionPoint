@@ -37,7 +37,7 @@ describe('/api/register', function () {
         .post('/api/register')
         .send(payload)
         .end((err, res) => {
-          res.should.have.status(204);
+          res.should.have.status(200);
           done();
       });
   });

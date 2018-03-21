@@ -18,8 +18,13 @@ function suspend(response, postData){
 			response.write("ERROR in students: "+err);
 	 		response.end();
 		} else if(result.length < 1){
-			response.writeHead(400);
- 			response.end("Student(s) not found");
+			response.writeHead(400, { 'Content-Type': 'application/json' });
+		  			var student_not_found = {
+		  				"Error":{
+		  					"message": "Student(s) not found"
+		  				}
+  					}
+     				response.end(JSON.stringify(student_not_found));
 		} else{
 			//Updating the suspension status of the particular student
 			connection.connection.query('UPDATE  registrationdetails SET suspension_status =\'true\' where student_id = ?', student , function(err,result) {
@@ -28,9 +33,14 @@ function suspend(response, postData){
 		     		response.writeHead(400); 
 		     		response.end();
 		  		} else {
-		     		console.log("Student(s) successfully registered");
-		     		response.writeHead(204);
-		     		response.end();
+		     		console.log("Student(s) successfully suspended");
+		     		response.writeHead(200, { 'Content-Type': 'application/json' });
+		  			var student_suspend = {
+		  				"Success":{
+		  					"message": "Student suspened successfully"
+		  				}
+  					}
+     				response.end(JSON.stringify(student_suspend));
 		 		}
 			});
 		}

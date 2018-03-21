@@ -22,8 +22,13 @@ function retrievefornotifications(response, postData){
      		response.end();
   		}
   		else if(result.length < 1){
-  			response.writeHead(400);
-     		response.end("Teacher not found");
+  			response.writeHead(400, { 'Content-Type': 'application/json' });
+  			var teacher_not_found = {
+  				"Error":{
+  					"message": "Teacher not found"
+  				}
+  			}
+     		response.end(JSON.stringify(teacher_not_found));
 
   		} 	
 
@@ -41,6 +46,9 @@ function retrievefornotifications(response, postData){
 		  			var unique_students = students_list.filter((x, i , a) => a.indexOf(x) == i);
 		  			response.writeHead(200, { 'Content-Type': 'application/json' });
 		  			var recipients = {
+		  				"success":{
+		  					"message":"Notification sent  suuccessfully"
+		  				},
 		  				"recipients":unique_students
 		  			}
 		     		response.end(JSON.stringify(recipients));
